@@ -82,10 +82,13 @@ function Models() {
       />
       <div className="car-list">
         {filteredCars.map((car) => (
-          <div key={car.id} className="card" onClick={() => setSelectedCar(car)}>
+          <form onSubmit={(e) => { e.preventDefault(); setSelectedCar(car); }}>
+          <div key={car.id} className="card">
             <img src={car.image} alt={car.name} className="car-image" />
             <h2>{car.name}</h2>
+            <button type="submit">Выбрать</button>
           </div>
+        </form>
         ))}
       </div>
       {selectedCar && (
